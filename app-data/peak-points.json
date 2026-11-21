@@ -1,0 +1,358 @@
+{
+  "sources": {
+    "osm": {
+      "title": "© OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "ODbL 1.0",
+      "download": "https://download.geofabrik.de/asia/south-korea.html"
+    },
+    "jeju": {
+      "title": "제주특별자치도 오름탐방",
+      "url": "https://www.jeju.go.kr/is/oreum/info/jejuoreum/view.wp?oreumId=121"
+    },
+    "photo": {
+      "title": "제주특별자치도 오름항공뷰",
+      "url": "https://www.data.go.kr/data/15096349/fileData.do"
+    }
+  },
+  "derivedFrom": "https://download.geofabrik.de/asia/south-korea.html",
+  "sourceDate": "2026-11-18T21:21:02Z",
+  "points": [
+    {
+      "id": "geomun",
+      "lat": 33.454787,
+      "lon": 126.718221,
+      "elevation": 458,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500034"
+    },
+    {
+      "id": "jocheon-772c85f3a5",
+      "lat": 33.453778,
+      "lon": 126.653801,
+      "elevation": 550.6,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500215"
+    },
+    {
+      "id": "keun-jigeuri",
+      "lat": 33.443783,
+      "lon": 126.645261,
+      "elevation": 596,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500609"
+    },
+    {
+      "id": "jocheon-5676bd76f0",
+      "lat": 33.47402,
+      "lon": 126.669424,
+      "elevation": 413.2,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500360"
+    },
+    {
+      "id": "seoubong",
+      "lat": 33.545845,
+      "lon": 126.677582,
+      "elevation": 109.4,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500335"
+    },
+    {
+      "id": "gujwa-18a0d287e2",
+      "lat": 33.456469,
+      "lon": 126.793023,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500110"
+    },
+    {
+      "id": "gujwa-82295dd251",
+      "lat": 33.466628,
+      "lon": 126.778608,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500129"
+    },
+    {
+      "id": "gujwa-a2a16b9680",
+      "lat": 33.436482,
+      "lon": 126.762865,
+      "elevation": 362,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500209"
+    },
+    {
+      "id": "gujwa-55d0c35fb5",
+      "lat": 33.460738,
+      "lon": 126.760381,
+      "elevation": 352,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500223"
+    },
+    {
+      "id": "gujwa-90b79d5676",
+      "lat": 33.427399,
+      "lon": 126.763106,
+      "elevation": 344,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500271"
+    },
+    {
+      "id": "gujwa-fc51049835",
+      "lat": 33.422444,
+      "lon": 126.749129,
+      "elevation": 362,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500346"
+    },
+    {
+      "id": "abu",
+      "lat": 33.447565,
+      "lon": 126.77968,
+      "elevation": 224,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500407"
+    },
+    {
+      "id": "gujwa-859c71dea3",
+      "lat": 33.457659,
+      "lon": 126.755832,
+      "elevation": 368,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500413"
+    },
+    {
+      "id": "gujwa-ea434fc6b7",
+      "lat": 33.478478,
+      "lon": 126.785949,
+      "elevation": 192,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018446"
+    },
+    {
+      "id": "yongnuni",
+      "lat": 33.459907,
+      "lon": 126.832502,
+      "elevation": 248,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500466"
+    },
+    {
+      "id": "jimi",
+      "lat": 33.499265,
+      "lon": 126.902365,
+      "elevation": 163,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500610"
+    },
+    {
+      "id": "darangshi",
+      "lat": 33.477712,
+      "lon": 126.821528,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500118"
+    },
+    {
+      "id": "akkeun-darangshi",
+      "lat": 33.474645,
+      "lon": 126.831494,
+      "elevation": 186.1,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500406"
+    },
+    {
+      "id": "gujwa-44acdb9f4a",
+      "lat": 33.547585,
+      "lon": 126.758236,
+      "elevation": 50.8,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500515"
+    },
+    {
+      "id": "pyoseon-b9b9d7cfea",
+      "lat": 33.401667,
+      "lon": 126.688103,
+      "elevation": 475.7,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500013"
+    },
+    {
+      "id": "keun-saseumi",
+      "lat": 33.399524,
+      "lon": 126.729155,
+      "elevation": 472,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500646"
+    },
+    {
+      "id": "ttarabi",
+      "lat": 33.38871,
+      "lon": 126.7529,
+      "elevation": 342,
+      "source": "jeju",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500168"
+    },
+    {
+      "id": "pyoseon-043a1bf08d",
+      "lat": 33.330142,
+      "lon": 126.781319,
+      "elevation": 203.6,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500015"
+    },
+    {
+      "id": "pyoseon-78915734eb",
+      "lat": 33.422631,
+      "lon": 126.771918,
+      "elevation": 345,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500026"
+    },
+    {
+      "id": "pyoseon-9db0f2901d",
+      "lat": 33.394085,
+      "lon": 126.768318,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500194"
+    },
+    {
+      "id": "baegyak",
+      "lat": 33.438192,
+      "lon": 126.789042,
+      "elevation": 356.9,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500232"
+    },
+    {
+      "id": "yeongjusan",
+      "lat": 33.404623,
+      "lon": 126.79626,
+      "elevation": 323,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500449"
+    },
+    {
+      "id": "pyoseon-b688d69ade",
+      "lat": 33.436089,
+      "lon": 126.806772,
+      "elevation": 344,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500600"
+    },
+    {
+      "id": "pyoseon-7e28f44b23",
+      "lat": 33.317263,
+      "lon": 126.81352,
+      "elevation": 133.3,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500186"
+    },
+    {
+      "id": "namwon-88df055f5c",
+      "lat": 33.340398,
+      "lon": 126.646022,
+      "elevation": 523.6,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500279"
+    },
+    {
+      "id": "namwon-627af9bc75",
+      "lat": 33.371904,
+      "lon": 126.570977,
+      "elevation": 1324,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500278"
+    },
+    {
+      "id": "namwon-30b868f7df",
+      "lat": 33.374098,
+      "lon": 126.59186,
+      "elevation": 1213.2,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500345"
+    },
+    {
+      "id": "namwon-32a75387d0",
+      "lat": 33.301008,
+      "lon": 126.676933,
+      "elevation": 208.5,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500516"
+    },
+    {
+      "id": "namwon-8214fe27e9",
+      "lat": 33.348929,
+      "lon": 126.736478,
+      "elevation": 195.4,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018843"
+    },
+    {
+      "id": "seongsan-74d68d4c38",
+      "lat": 33.456456,
+      "lon": 126.872673,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500135"
+    },
+    {
+      "id": "seongsan-0c089b338a",
+      "lat": 33.40903,
+      "lon": 126.828658,
+      "elevation": 230,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500190"
+    },
+    {
+      "id": "daesusan",
+      "lat": 33.440017,
+      "lon": 126.901296,
+      "elevation": null,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500134"
+    },
+    {
+      "id": "seongsan-e965fffb13",
+      "lat": 33.427433,
+      "lon": 126.933639,
+      "elevation": 33.6,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500263"
+    },
+    {
+      "id": "sosusan",
+      "lat": 33.436764,
+      "lon": 126.912217,
+      "elevation": 45.3,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500369"
+    },
+    {
+      "id": "dokja",
+      "lat": 33.388003,
+      "lon": 126.853552,
+      "elevation": 150,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500145"
+    },
+    {
+      "id": "seongsan-ilchulbong",
+      "lat": 33.458889,
+      "lon": 126.940818,
+      "elevation": 182,
+      "source": "osm",
+      "corroboration": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500349"
+    },
+    {
+      "id": "siksan",
+      "lat": 33.465698,
+      "lon": 126.919888,
+      "elevation": 11.9,
+      "source": "osm",
+      "corroboration": "https://www.data.go.kr/data/15096349/fileData.do"
+    }
+  ]
+}
