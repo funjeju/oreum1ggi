@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function owns(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    match /oreumTravelUsers/{uid}/saved/{item} {
+      allow read, delete: if owns(uid);
+      allow create, update: if owns(uid)
+        && request.resource.data.keys().hasAll(['id', 'savedAt'])
+        && request.resource.data.keys().hasOnly(['id', 'savedAt'])
+        && request.resource.data.id is string
+        && request.resource.data.id.size() > 0 && request.resource.data.id.size() <= 256
+        && request.resource.data.savedAt == request.time;
+    }
+    match /oreumTravelUsers/{uid}/visited/{summit} {
+      allow read: if owns(uid);
+      allow write: if false;
+    }
+  }
+}
