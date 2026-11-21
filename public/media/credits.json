@@ -1,0 +1,66 @@
+[
+  {
+    "file": "/media/hero.webp",
+    "title": "제주 동부 오름 능선",
+    "kind": "illustration",
+    "credit": "오름한끼 · AI로 제작한 제주 오름 풍경 연출",
+    "creditEn": "Oreum Hankki · AI-generated interpretation of an eastern Jeju ridgeline",
+    "source": null
+  },
+  {
+    "file": "/media/jocheon.webp",
+    "title": "조천 해변과 서우봉 권역",
+    "kind": "illustration",
+    "credit": "오름한끼 · AI로 제작한 조천 해안 풍경 연출",
+    "creditEn": "Oreum Hankki · AI-generated interpretation of the Jocheon coast",
+    "source": null
+  },
+  {
+    "file": "/media/gujwa.webp",
+    "title": "구좌 들녘과 오름 권역",
+    "kind": "illustration",
+    "credit": "오름한끼 · AI로 제작한 구좌 들녘 풍경 연출",
+    "creditEn": "Oreum Hankki · AI-generated interpretation of the Gujwa countryside",
+    "source": null
+  },
+  {
+    "file": "/media/seongsan.webp",
+    "title": "식산봉에서 본 성산일출봉",
+    "kind": "photograph",
+    "credit": "제주특별자치도 · 드론항공뷰 오름 (2021), 식산봉",
+    "creditEn": "Jeju Special Self-Governing Province · Oreum Drone Aerial Views (2021), Siksanbong",
+    "source": "https://www.data.go.kr/data/15096349/fileData.do",
+    "sourceMember": "sigsanbong/sigsanbong_003.JPG",
+    "captured": "2021-10-28T13:43:06",
+    "license": "공공데이터포털 이용허락범위 제한 없음",
+    "processing": "원본 구면 파노라마를 일반 시야각으로 투영하고 WebP로 압축"
+  },
+  {
+    "file": "/media/pyoseon.webp",
+    "title": "표선 가시리 따라비오름",
+    "kind": "photograph",
+    "credit": "제주특별자치도 · 드론항공뷰 오름 (2021), 따라비오름",
+    "creditEn": "Jeju Special Self-Governing Province · Oreum Drone Aerial Views (2021), Ttarabi Oreum",
+    "source": "https://www.data.go.kr/data/15096349/fileData.do",
+    "sourceMember": "ttalabi/ttalabi_004.JPG",
+    "captured": "2021-10-28T16:48:45",
+    "license": "공공데이터포털 이용허락범위 제한 없음",
+    "processing": "원본 구면 파노라마를 일반 시야각으로 투영하고 WebP로 압축"
+  },
+  {
+    "file": "/media/namwon.webp",
+    "title": "남원 감귤밭과 돌담",
+    "kind": "illustration",
+    "credit": "오름한끼 · AI로 제작한 남원 감귤밭 풍경 연출",
+    "creditEn": "Oreum Hankki · AI-generated interpretation of a Namwon citrus orchard",
+    "source": null
+  },
+  {
+    "file": "/media/udo.webp",
+    "title": "우도 해안 권역",
+    "kind": "illustration",
+    "credit": "오름한끼 · AI로 제작한 우도 해안 풍경 연출",
+    "creditEn": "Oreum Hankki · AI-generated interpretation of the Udo coast",
+    "source": null
+  }
+]
