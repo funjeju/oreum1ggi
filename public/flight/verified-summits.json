@@ -1,0 +1,146 @@
+[
+  {
+    "id": "jimi",
+    "name": "지미봉",
+    "checkpointName": "지미봉 정상 전망대",
+    "checkpointNames": {
+      "ko": "지미봉 정상 전망대",
+      "en": "Jimi-bong summit lookout",
+      "ja": "チミ峰山頂展望台",
+      "zh": "地尾峰山顶观景台",
+      "tw": "地尾峰山頂觀景台"
+    },
+    "latitude": 33.49931378,
+    "longitude": 126.902439,
+    "checkInEnabled": true,
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000021586",
+    "coordinateSource": "https://oak.chosun.ac.kr/handle/2020.oak/6135",
+    "note": "위치는 지미봉 삼각점 WGS84 좌표다. 올레 21코스 정상 전망대의 공식 탐방로에서 방문을 기록한다."
+  },
+  {
+    "id": "udobong",
+    "name": "우도봉",
+    "checkpointName": "우도등대 공원",
+    "checkpointNames": {
+      "ko": "우도등대 공원",
+      "en": "Udo Lighthouse Park",
+      "ja": "牛島灯台公園",
+      "zh": "牛岛灯塔公园",
+      "tw": "牛島燈塔公園"
+    },
+    "latitude": 33.49305556,
+    "longitude": 126.96611111,
+    "checkInEnabled": true,
+    "source": "https://www.katon.or.kr/page/37",
+    "coordinateSource": "https://heritage.iala.int/lighthouses/udo-lighthouse/",
+    "note": "해양수산부가 2025년 국제항로표지기구에 제출한 우도등대 좌표다. 등대 테마공원 관람 구역에서 방문을 기록한다."
+  },
+  {
+    "id": "seongsan",
+    "name": "성산일출봉",
+    "checkpointName": "성산일출봉 공영주차장",
+    "checkpointNames": {
+      "ko": "성산일출봉 공영주차장",
+      "en": "Seongsan Ilchulbong public car park",
+      "ja": "城山日出峰公営駐車場",
+      "zh": "城山日出峰公共停车场",
+      "tw": "城山日出峰公有停車場"
+    },
+    "latitude": 33.46260347,
+    "longitude": 126.935333,
+    "checkInEnabled": true,
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500349",
+    "coordinateSource": "https://parking.govpped.com/parking/406-2-000006",
+    "note": "서귀포시 전국주차장정보표준데이터의 성산일출봉 주차장(406-2-000006) 좌표다. 입구 주차장 보행 구역에서 방문을 기록한다."
+  },
+  {
+    "id": "abu",
+    "name": "아부오름",
+    "checkpointName": "아부오름 주차장 정류장",
+    "checkpointNames": {
+      "ko": "아부오름 주차장 정류장",
+      "en": "Abu Oreum Car Park bus stop",
+      "ja": "アブオルム駐車場バス停",
+      "zh": "Abu 火山丘停车场公交站",
+      "tw": "Abu 火山丘停車場公車站"
+    },
+    "latitude": 33.446295,
+    "longitude": 126.781119,
+    "checkInEnabled": true,
+    "source": "https://bus.jeju.go.kr/mobile/station/detailStation/405002028?lang=ko",
+    "coordinateSource": "https://trans.minmins.kr/bus-stop.php?city=39&id=JEB405002028",
+    "note": "국토교통부 TAGO 정류장 JEB405002028의 좌표다. 아부오름 주차장 정류장 대기 공간에서 방문을 기록한다."
+  },
+  {
+    "id": "yongnuni",
+    "name": "용눈이오름",
+    "checkpointName": "용눈이오름 정류장",
+    "checkpointNames": {
+      "ko": "용눈이오름 정류장",
+      "en": "Yongnuni Oreum bus stop",
+      "ja": "ヨンヌニオルムバス停",
+      "zh": "龙眼岳公交站",
+      "tw": "龍眼岳公車站"
+    },
+    "latitude": 33.463411,
+    "longitude": 126.831606,
+    "checkInEnabled": true,
+    "source": "https://www.visitjeju.net/kr/detail/view?contentsid=CONT_000000000500466",
+    "coordinateSource": "https://trans.minmins.kr/bus-stop.php?city=39&id=JEB405002016",
+    "note": "국토교통부 TAGO 정류장 JEB405002016의 좌표다. 용눈이오름 입구 정류장 대기 공간에서 방문을 기록한다."
+  },
+  {
+    "id": "seoubong",
+    "name": "서우봉",
+    "checkpointName": "서우봉 산책로 공영주차장",
+    "checkpointNames": {
+      "ko": "서우봉 산책로 공영주차장",
+      "en": "Seoubong trail public car park",
+      "ja": "ソウ峰散策路公営駐車場",
+      "zh": "犀牛峰步道公共停车场",
+      "tw": "犀牛峰步道公有停車場"
+    },
+    "latitude": 33.54376,
+    "longitude": 126.67595,
+    "checkInEnabled": true,
+    "source": "https://tour.jejudsi.kr/tour.htm?act=view&id=map10",
+    "coordinateSource": "https://megojigo.com/bbs/board.php?bo_table=evcharging&wr_id=12982",
+    "note": "함덕리 산4 서우봉 공영주차장에 등록된 전기차충전소 위치다. 산책로 주차장 보행 구역에서 방문을 기록한다."
+  },
+  {
+    "id": "keunsaseumi",
+    "name": "큰사슴이오름",
+    "checkpointName": "유채꽃프라자 입구",
+    "checkpointNames": {
+      "ko": "유채꽃프라자 입구",
+      "en": "Canola Flower Plaza entrance",
+      "ja": "菜の花プラザ入口",
+      "zh": "油菜花广场入口",
+      "tw": "油菜花廣場入口"
+    },
+    "latitude": 33.39376207,
+    "longitude": 126.7317797,
+    "checkInEnabled": true,
+    "source": "https://sjsea.sje.go.kr/mnu/00029/program/00003/expDetail.do?ctgry=exp1&idx=00108&pageIndex=1",
+    "coordinateSource": "https://ger.clubrichtour.co.kr/bbs/board.php?bo_table=datagokr_Kor&wr_id=8231",
+    "note": "학생해양수련원이 안내하는 큰사슴이오름 탐방 기점 유채꽃프라자 좌표다. 마을 방문시설 입구에서 방문을 기록한다."
+  },
+  {
+    "id": "mulyeongari",
+    "name": "물영아리오름",
+    "checkpointName": "남원읍 충혼묘지·물영아리 동쪽 정류장",
+    "checkpointNames": {
+      "ko": "남원읍 충혼묘지·물영아리 동쪽 정류장",
+      "en": "Namwon Memorial Cemetery · Mulyeongari bus stop (east)",
+      "ja": "南元邑忠魂墓地・ムルヨンアリ東側バス停",
+      "zh": "南元邑忠魂墓地·Mulyeongari 东侧公交站",
+      "tw": "南元邑忠魂墓地·Mulyeongari 東側公車站"
+    },
+    "latitude": 33.359543,
+    "longitude": 126.692679,
+    "checkInEnabled": true,
+    "source": "https://www.visitjeju.net/kareumstay/ko/hosts/svh-hsv-existing-spot-5",
+    "coordinateSource": "https://trans.minmins.kr/bus-stop.php?city=39&id=JEB406001114",
+    "note": "국토교통부 TAGO 정류장 JEB406001114의 좌표다. 습지 탐방로 아래 동쪽 정류장 대기 공간에서 방문을 기록한다."
+  }
+]
