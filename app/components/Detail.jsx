@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {ArrowLeft, ArrowRight, ArrowUpRight, BedDouble, Bookmark, Coffee, Compass, ExternalLink, HandHeart, MapPin, Mountain, Navigation, Share2, Utensils, Waves} from 'lucide-react';
 import catalog from '../../app-data/catalog.json';
 import {resolveFlightPoint, fullFlightRadiusMeters} from '../../public/flight/geo.js';
@@ -94,7 +94,14 @@ function distanceMeters(a,b) {
   const h=Math.sin((b.lat-a.lat)*rad/2)**2 + Math.cos(a.lat*rad)*Math.cos(b.lat*rad)*Math.sin((b.lon-a.lon)*rad/2)**2;
   return 12742017.6*Math.asin(Math.min(1,Math.sqrt(h)));
 }
-function Nearby({peak, point, lang, travel, navigate}) {
+function Nearby({peak, point, lang, travel, navigate, focusOnArrival}) {
+  const sectionRef = useRef(null);
+  useEffect(() => {
+    if (focusOnArrival) {
+      sectionRef.current?.scrollIntoView({block:'start'});
+      sectionRef.current?.focus({preventScroll:true});
+    }
+  }, [focusOnArrival, peak.id]);
   const [radius,setRadius]=useState(fullFlightRadiusMeters),[category,setCategory]=useState('all'),[limit,setLimit]=useState(5);
   const t=key=>word(lang,...copy[key]);
   const ordered=useMemo(()=>point?catalog.places.filter(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lon)).map(place=>({place,distance:distanceMeters(point,place)})).sort((a,b)=>a.distance-b.distance):[],[point?.lat,point?.lon]);
@@ -102,7 +109,7 @@ function Nearby({peak, point, lang, travel, navigate}) {
   const within=ordered.filter(row=>row.distance<=radius&&accepts(row.place));
   const fallback=!within.length;
   const rows=fallback?catalog.places.filter(p=>p.areaId===peak.areaId&&accepts(p)).sort((a,b)=>Number(b.village===peak.village)-Number(a.village===peak.village)||Number(b.featured)-Number(a.featured)).map(place=>({place})):within;
-  return <section className={css.nearby}>
+  return <section ref={sectionRef} className={css.nearby} tabIndex={-1} aria-label={t('nearby')}>
     <div className={css.nearHead}><h2>{t('nearby')}</h2>{point&&<div className={css.radiusSwitch}>{[fullFlightRadiusMeters,5000].map(r=><button key={r} type="button" aria-pressed={radius===r} onClick={()=>{setRadius(r);setLimit(5)}}>{r/1000} km</button>)}</div>}</div>
     <div className={css.nearCats}>{['all',...Object.keys(categories)].map(c=><button key={c} type="button" aria-pressed={category===c} onClick={()=>{setCategory(c);setLimit(5)}}>{c==='all'?t('all'):navTitle(c,lang)}</button>)}</div>
     <div className={css.distanceNote} aria-live="polite">{fallback?<><b>{t('areaList')}</b> {t(point?'outside':'unlocated')}</>:t('direct')+' · '+within.length}</div>
@@ -130,7 +137,7 @@ function Sources({route, peak, lang}) {
   </div>;
 }
 
-export default function Detail({type, id, lang = 'ko', onNavigate, travel}) {
+export default function Detail({type, id, section, lang = 'ko', onNavigate, travel}) {
   const t = key => word(lang, ...copy[key]);
   const isCourse = type === 'course';
   const record = (isCourse ? routes : peaks).get(id);
@@ -182,7 +189,7 @@ export default function Detail({type, id, lang = 'ko', onNavigate, travel}) {
               {record.aliases.length > 0 && <><dt>{t('aliases')}</dt><dd>{record.aliases.join(' · ')}</dd></>}
               {point && <><dt>{t('coords')}</dt><dd>{point.lat.toFixed(4)}° N, {point.lon.toFixed(4)}° E</dd></>}
             </dl>{launch&&<Internal {...common} view="flight" params={{id}} className={css.flight}><Navigation size={17}/>{t('flight')}<ArrowRight size={16}/></Internal>}</section>
-            <Nearby key={record.id} peak={record} point={point} {...common} travel={travel}/>
+            <Nearby key={record.id} peak={record} point={point} {...common} travel={travel} focusOnArrival={section==='nearby'}/>
             {alternatives.length > 0 && <section className={css.related}><h2>{t(related.length ? 'related' : 'more')}</h2>
               {alternatives.map(r => <Internal key={r.id} {...common} view="course" params={{id:r.id}}><div><strong>{titleOf(r,lang)}</strong><small lang="ko">{r.places.join(' · ')}</small></div><ArrowRight size={18}/></Internal>)}
             </section>}

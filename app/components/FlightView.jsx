@@ -1,31 +1,138 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
-import {ArrowLeft,Compass} from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { ArrowLeft, MapPin, Maximize, Minimize, Mountain } from 'lucide-react';
 import catalog from '../../app-data/catalog.json';
-import {word} from './words';
-const errors={
- 'auth-required':['구글 로그인 후 방문을 기록해요.','Sign in to record your visit.','ログインして訪問を記録してください。','请先登录。','請先登入。'],
- 'location-denied':['위치 접근을 허용하면 지정 지점의 방문을 확인할 수 있어요.','Enable location access to verify your visit at the checkpoint.','訪問チェックポイントでの確認には位置情報の利用を許可してください。','请允许使用位置信息以验证您已到访该点。','請允許使用定位資訊，以驗證您已到訪該處。'],
- 'outside-summit':['오름에 표시된 방문 인증 지점에서 다시 시도해 주세요.','Try again at the marked visit checkpoint.','表示された訪問チェックポイントで再度お試しください。','请在标出的到访验证点重试。','請在標示的到訪驗證點再試一次。'],
- 'location-inaccurate':['위치 오차가 커요. 위치가 안정된 뒤 다시 시도해 주세요.','GPS accuracy is low. Try again after the signal settles.','GPSが安定してから再度お試しください。','请在定位准确后重试。','請在定位準確後重試。']
+import { resolveFlightPoint } from '../../public/flight/geo.js';
+import { word } from './words';
+import css from './FlightView.module.css';
+
+const copy = {
+  map: ['오름 지도', 'Oreum map', 'オルム地図', '山丘地图', '山丘地圖'],
+  village: ['마을 둘러보기', 'Explore the village', '村を巡る', '逛逛村庄', '逛逛村莊'],
+  expand: ['전체 화면', 'Full screen', '全画面', '全屏', '全螢幕'],
+  collapse: ['전체 화면 닫기', 'Exit full screen', '全画面を終了', '退出全屏', '退出全螢幕'],
+  loading: ['지형을 여는 중…', 'Opening the terrain…', '地形を読み込み中…', '正在载入地形…', '正在載入地形…'],
+  unsupported: ['이 오름의 조망 자료를 준비하고 있어요.', 'The viewpoint for this oreum is being prepared.', 'このオルムの展望は準備中です。', '此山丘的观景资料准备中。', '此山丘的觀景資料準備中。'],
+  failed: ['비행 화면을 열지 못했어요.', 'The flight view could not open.', '飛行画面を開けませんでした。', '未能打开飞行画面。', '未能開啟飛行畫面。'],
+  retry: ['다시 열기', 'Try again', '再試行', '重试', '重試'],
+  dismiss: ['닫기', 'Dismiss', '閉じる', '关闭', '關閉'],
+  'location-denied': ['위치 접근을 허용하면 지정 지점에서 방문을 인증할 수 있어요.', 'Allow location access at the marked checkpoint.', '訪問チェックポイントで位置情報を許可してください。', '请在指定到访点允许位置访问。', '請在指定到訪點允許位置存取。'],
+  'outside-summit': ['지도에 표시된 방문 인증 지점에서 다시 시도해 주세요.', 'Try again at the marked visit checkpoint.', '表示された訪問チェックポイントで再度お試しください。', '请在标出的到访验证点重试。', '請在標示的到訪驗證點重試。'],
+  'location-inaccurate': ['GPS 오차가 커요. 신호가 안정되면 다시 시도해 주세요.', 'GPS accuracy is low. Try again when the signal settles.', 'GPSが安定してから再度お試しください。', '请在定位准确后重试。', '請在定位準確後重試。'],
+  unavailable: ['방문 인증을 완료하지 못했어요. 비행 미리보기는 계속 이용할 수 있어요.', 'Visit verification is unavailable. You can keep exploring the preview.', '訪問を確認できません。プレビューは引き続き利用できます。', '暂时无法验证到访，可继续预览飞行。', '暫時無法驗證到訪，可繼續預覽飛行。'],
 };
-export default function FlightView({id,mode,lang,travel,onNavigate}){
- const root=useRef(null),latest=useRef({travel,onNavigate}),flight=useRef(null),[message,setMessage]=useState('');latest.current={travel,onNavigate};const w=(...v)=>word(lang,...v);
- useEffect(()=>{let disposed=false,cleanup;setMessage('');
- async function mount(){
- const [{mountFlight},{resolveFlightPoint}]=await Promise.all([import(/* webpackIgnore: true */ '/flight/index.js'),import(/* webpackIgnore: true */ '/flight/geo.js')]);if(disposed)return;
- const oreum=catalog.oreums.find(o=>o.id===id)||{id,name:id};const point=resolveFlightPoint(oreum);
- if(!point){setMessage(w('이 오름의 정상 조망 자료를 준비하고 있어요.','Summit data for this oreum is being prepared.','このオルムの展望は準備中です。','此山丘观景资料准备中。','此山丘觀景資料準備中。'));return}
- cleanup=mountFlight(root.current,{oreum,locale:lang,places:catalog.places,initialMode:mode,unlocked:latest.current.travel.visited.includes(point.id),
- savedIds:latest.current.travel.saved.filter(key=>key.startsWith('place:')).map(key=>key.slice(6)),
- onSave:place=>{const t=latest.current.travel;if(!t.saved.includes('place:'+place.id))t.toggleSaved('place:'+place.id);},
- onExit:()=>latest.current.onNavigate('map'),onVerify:async visitId=>{try{await latest.current.travel.checkIn(visitId);setMessage('');return true}catch(e){if(e.code==='auth-required')latest.current.onNavigate('login');setMessage(word(lang,...(errors[e.code]||['지금은 방문을 확인할 수 없어요. 비행 미리보기를 이용해 주세요.','Visit verification is unavailable. You can still preview the flight.','訪問を確認できません。プレビューは利用可能です。','暂时无法验证到访，可预览飞行。','暫時無法驗證到訪，可預覽飛行。'])));return false}}});
- flight.current={cleanup,pointId:point.id};
- }
- mount().catch(()=>{if(!disposed)setMessage(w('이 기기에서 비행 화면을 열지 못했어요. 오름 지도로 돌아가 둘러볼 수 있어요.','Flight could not open on this device. You can explore the oreum map.','飛行を開けませんでした。地図から探索できます。','无法打开飞行，请返回地图。','無法開啟飛行，請返回地圖。'))});
- return()=>{disposed=true;flight.current=null;if(typeof cleanup==='function')cleanup();else cleanup?.destroy?.()};
- },[id,lang,mode]);
- useEffect(()=>{const active=flight.current;if(active)active.cleanup?.setUnlocked?.(travel.visited.includes(active.pointId));},[travel.visited]);
- useEffect(()=>{flight.current?.cleanup?.setSaved?.(travel.saved.filter(key=>key.startsWith('place:')).map(key=>key.slice(6)));},[travel.saved]);
- return <section className="flight-page"><div className="flight-page-head wrap"><button className="text-action" onClick={()=>onNavigate('map')}><ArrowLeft size={17}/>{w('오름 지도','Oreum map','オルム地図','山丘地图','山丘地圖')}</button><span><Compass size={16}/>{w('정상 조망 · 가상 비행','Summit view · Virtual flight','山頂の眺望・飛行','山顶观景 · 虚拟飞行','山頂觀景 · 虛擬飛行')}</span></div>{message&&<p role="status" className="flight-note">{message}</p>}<div ref={root} className="flight-host"/></section>
+
+export default function FlightView({id, mode, lang, travel, onNavigate, onModeChange}) {
+  const section = useRef(null);
+  const host = useRef(null);
+  const controller = useRef(null);
+  const latest = useRef(null);
+  const [expanded, setExpanded] = useState(false);
+  const [status, setStatus] = useState('loading');
+  const [notice, setNotice] = useState('');
+  const [attempt, setAttempt] = useState(0);
+  const peak = resolveFlightPoint(catalog.oreums.find(record => record.id === id) || id);
+  const t = key => word(lang, ...copy[key]);
+
+  const closeFull = useCallback(() => {
+    setExpanded(false);
+    if (document.fullscreenElement === section.current) document.exitFullscreen?.().catch(() => {});
+  }, []);
+  const navigate = (view, params) => {
+    closeFull();
+    onNavigate(view, params);
+  };
+  latest.current = {travel, mode, lang, onModeChange, navigate, expanded};
+
+  useEffect(() => {
+    const changed = () => setExpanded(document.fullscreenElement === section.current);
+    document.addEventListener('fullscreenchange', changed);
+    return () => document.removeEventListener('fullscreenchange', changed);
+  }, []);
+  async function toggleFull() {
+    if (expanded) return closeFull();
+    setExpanded(true);
+    if (section.current?.requestFullscreen) {
+      try { await section.current.requestFullscreen(); }
+      catch { /* Embedded browsers can still expand the scene within the page. */ }
+    }
+  }
+
+  useEffect(() => {
+    let alive = true;
+    let cleanup;
+    setStatus(peak ? 'loading' : 'unsupported');
+    setNotice('');
+    if (!peak) return;
+    async function mount() {
+      const {mountFlight} = await import(/* webpackIgnore: true */ '/flight/index.js');
+      if (!alive) return;
+      const current = latest.current;
+      cleanup = mountFlight(host.current, {
+        oreum: peak,
+        locale: lang,
+        places: catalog.places,
+        initialMode: current.mode,
+        unlocked: current.travel.visited.includes(peak.id),
+        savedIds: current.travel.saved.filter(key => key.startsWith('place:')).map(key => key.slice(6)),
+        onModeChange: next => latest.current.onModeChange?.(next),
+        onOpenPlace: place => latest.current.navigate('places', {area: place.areaId, place: place.id}),
+        onSave: place => {
+          const state = latest.current.travel;
+          if (!state.saved.includes('place:' + place.id)) state.toggleSaved('place:' + place.id);
+        },
+        onExit: () => {
+          if (latest.current.expanded) closeFull();
+          else latest.current.navigate('map', {area: peak.area});
+        },
+        onVerify: async visitId => {
+          try {
+            await latest.current.travel.checkIn(visitId);
+            if (alive) setNotice('');
+            return true;
+          } catch (error) {
+            if (!alive) return false;
+            if (error.code === 'auth-required') latest.current.navigate('login');
+            else setNotice(copy[error.code] ? error.code : 'unavailable');
+            return false;
+          }
+        },
+      });
+      controller.current = cleanup;
+      setStatus('ready');
+    }
+    mount().catch(() => { if (alive) setStatus('failed'); });
+    return () => { alive = false; controller.current = null; cleanup?.(); };
+  }, [peak, lang, attempt, closeFull]);
+  useEffect(() => { controller.current?.setMode?.(mode || 'terrain'); }, [mode]);
+  useEffect(() => { if (peak) controller.current?.setUnlocked?.(travel.visited.includes(peak.id)); }, [peak, travel.visited]);
+  useEffect(() => { controller.current?.setSaved?.(travel.saved.filter(key => key.startsWith('place:')).map(key => key.slice(6))); }, [travel.saved]);
+  useEffect(() => {
+    if (!expanded) return;
+    const keydown = event => {
+      if (event.key === 'Escape' && !document.fullscreenElement && !event.defaultPrevented) closeFull();
+    };
+    window.addEventListener('keydown', keydown);
+    return () => window.removeEventListener('keydown', keydown);
+  }, [expanded, closeFull]);
+
+  return <section ref={section} className={css.page} data-expanded={expanded}>
+    <nav className={css.bar} aria-label={t('map')}>
+      <button onClick={() => navigate('map', peak ? {area: peak.area} : {})}><ArrowLeft size={17}/>{t('map')}</button>
+      <div className={css.tools}>
+        {peak && <button onClick={() => navigate('oreum', {id: peak.catalogId, section:'nearby'})}><MapPin size={16}/>{t('village')}</button>}
+        <button onClick={toggleFull} aria-pressed={expanded} aria-label={t(expanded?'collapse':'expand')} title={t(expanded?'collapse':'expand')}>
+          {expanded ? <Minimize size={17}/> : <Maximize size={17}/>}<span className={css.fullText}>{t(expanded?'collapse':'expand')}</span>
+        </button>
+      </div>
+    </nav>
+    <div className={css.stage}>
+      <div className={css.host} ref={host}/>
+      {status !== 'ready' && <div className={css.load} role="status"><Mountain size={26}/><span>{t(status)}</span>
+        {status==='failed' && <button onClick={() => setAttempt(n => n + 1)}>{t('retry')}</button>}
+        {status==='unsupported' && <button onClick={() => navigate('map')}>{t('map')}</button>}
+      </div>}
+      {notice && <div className={css.notice} role="status">{t(notice)}<button onClick={() => setNotice('')} aria-label={t('dismiss')}>×</button></div>}
+    </div>
+  </section>;
 }
